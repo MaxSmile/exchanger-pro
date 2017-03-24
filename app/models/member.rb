@@ -90,7 +90,8 @@ class Member < ActiveRecord::Base
 
     def create_from_auth(auth_hash)
       member = create(email: auth_hash['info']['email'], nickname: auth_hash['info']['nickname'],
-                      activated: false)
+                      activated: true)
+      
       member.add_auth(auth_hash)
       member.send_activation if auth_hash['provider'] == 'identity'
       member
