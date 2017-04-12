@@ -8,3 +8,24 @@
   ask: {fee: 0, currency: btc, fixed: 4}
   sort_order: 1
   #visible: false     # default to true
+- id: rptbtc
+  code: 2
+  #name: RPT/BTC      # default name
+  base_unit: rpt
+  quote_unit: btc
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0, currency: btc, fixed: 6}
+  ask: {fee: 0, currency: rpt, fixed: 6}
+  sort_order: 2
+  #visible: false     # default to true
+
+- id: trtbtc
+  code: 3
+  #name: TRT/BTC      # default name
+  base_unit: trt
+  quote_unit: btc
+  #price_group_fixed: 1 # aggregate price levels in orderbook
+  bid: {fee: 0, currency: btc, fixed: 6}
+  ask: {fee: 0, currency: trt, fixed: 6}
+  sort_order: 3
+  #visible: false     # default to true
