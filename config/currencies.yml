@@ -24,3 +24,29 @@
     accounts:
       -
         address: 17WwQp6MiBVvjPexzqms6fG37wfAzEEfqP
+- id: 3
+  key: realpointcoin
+  code: rpt
+  symbol: "RPT"
+  coin: true
+  quick_withdraw_max: 0
+  rpc: http://rptfjdbhfusrjbfvhv:13ucW16WZ2wfdf24234Qkxgc5duEeJrAqQEzcJ12bvP8ymB@127.0.0.1:16501
+  blockchain: http://rptblockchain.com/tx/#{txid}
+  address_url: http://rptblockchain.com/address/#{address}
+  assets:
+    accounts:
+      -
+        address: RkDjnJ9mcmexmcLFtLq39KnykS8v9UCKH3
+- id: 4
+  key: tritiumcoin
+  code: trt
+  symbol: "TRT"
+  coin: true
+  quick_withdraw_max: 0
+  rpc: http://trt834yhbhfusrjbfvhv:15fjngjf3udf24234Qkxgc5duEeJrAqQEzcJ12bvP8ymB@127.0.0.1:17501
+  blockchain: https://blockchain.info/tx/#{txid}
+  address_url: https://blockchain.info/address/#{address}
+  assets:
+    accounts:
+      -
+        address: TUaaqmXAasupjnozJ9fQekUcXsfemMTXbK
