@@ -6,9 +6,13 @@ module Private
       @cny_assets  = Currency.assets('cny')
       @btc_proof   = Proof.current :btc
       @cny_proof   = Proof.current :cny
+      @rpt_proof   = Proof.current :rpt
+      @trt_proof   = Proof.current :trt
 
       if current_user
         @btc_account = current_user.accounts.with_currency(:btc).first
+        @rpt_account = current_user.accounts.with_currency(:rpt).first
+        @trt_account = current_user.accounts.with_currency(:trt).first
         @cny_account = current_user.accounts.with_currency(:cny).first
       end
     end

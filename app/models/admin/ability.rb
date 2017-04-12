@@ -19,11 +19,13 @@ module Admin
       can :manage, ::Deposits::Bank
       can :manage, ::Deposits::Satoshi
       can :manage, ::Deposits::Realpointcoin
+      can :manage, ::Deposits::Tritiumcoin
 
       can :menu, Withdraw
       can :manage, ::Withdraws::Bank
       can :manage, ::Withdraws::Satoshi
       can :manage, ::Withdraws::Realpointcoin
+      can :manage, ::Withdraws::Tritiumcoin
     end
   end
 end
