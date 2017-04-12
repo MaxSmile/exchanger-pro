@@ -14,3 +14,15 @@
       branch: 'Your Bank Branch'
       holder: 'Your Account Holder'
       account: 'Your Account Number'
+- id: 1000
+  key: realpointcoin
+  currency: rpt
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 8
+- id: 1100
+  key: tritiumcoin
+  currency: trt
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 8

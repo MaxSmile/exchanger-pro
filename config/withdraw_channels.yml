@@ -16,3 +16,17 @@
   proportion: true
   inuse: true
   type: WithdrawChannelBank
+- id: 1000
+  key: realpointcoin
+  currency: rpt
+  fixed: 8
+  fee: 0.007
+  inuse: true
+  type: WithdrawChannelRealpointcoin
+- id: 1100
+  key: tritiumcoin
+  currency: trt
+  fixed: 8
+  fee: 0.007
+  inuse: true
+  type: WithdrawChannelTritiumcoin
