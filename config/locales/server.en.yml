@@ -1596,8 +1596,6 @@ en:
       wait: Wait
       cancel: Cancel
     currency:
-      usd: USD
-      eur: EUR
       cny: CNY
       btc: BTC
       rpt: RPT
