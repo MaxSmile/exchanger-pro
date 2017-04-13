@@ -20,7 +20,9 @@ en:
       admin/withdraws_grid: Withdraws
       deposits/bank: Deposit Bank
       withdraws/bank: Withdraw Bank
-      withdraws/satoshi: Withdraw
+      withdraws/satoshi: Withdraw Bitcoin
+      withdraws/realpointcoin: Withdraw RealPointCoin
+      withdraws/tritiumcoin: Withdraw Tritium
     attributes:
       api_token:
         access_key: Access Key
@@ -174,7 +176,47 @@ en:
         amount: Amount
         confirmations: Confirmation
         aasm_state_text: State
+      deposits/realpointcoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/tritiumcoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
       withdraws/satoshi:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/realpointcoin:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/tritiumcoin:
         id: ID
         member_name: Account
         currency_obj_key_text: Currency
@@ -249,6 +291,18 @@ en:
               blank: Please enter your withdrawal address
               invalid: Invalid withdrawals address, please review.
               ismine: Please use a new address.
+        withdraws/realpointcoin:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/tritiumcoin:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
         two_factor:
           attributes:
             otp:
@@ -296,6 +350,8 @@ en:
       doge: DOGE
       pts: PTS
       ltc: LTC
+      rpt: RPT
+      trt: TRT
   currency:
     satoshi:
       key: BTC
@@ -321,6 +377,16 @@ en:
       key: PTS
       code: PTS
       name: Protoshare
+      format: '0,0.0000'
+    realpointcoin:
+      key: RPT
+      code: RPT
+      name: RealPointCoin
+      format: '0,0.0000'
+    tritiumcoin:
+      key: TRT
+      code: TRT
+      name: Tritiumcoin
       format: '0,0.0000'
   datagrid:
     empty: no data found
@@ -467,6 +533,20 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
+    realpointcoin:
+      key: RealPointCoin Chain
+      title: RealPointCoin Deposits
+      intro: Deposit realpointcoin from your own wallet address to Peatio account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    tritiumcoin:
+      key: Tritiumcoin Chain
+      title: Tritium Deposits
+      intro: Deposit tritium from your own wallet address to Peatio account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
   deposits/bank:
     aasm_state:
       submitting: Submitting
@@ -479,6 +559,15 @@ en:
   private:
     deposits:
       satoshis:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      realpointcoins:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      peercoins:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      tritiumcoins:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
       banks:
@@ -599,6 +688,36 @@ en:
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
             complete the bank transfer.
+      realpointcoins:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      tritiumcoins:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
     tickets:
       index:
         new_ticket: New Ticket
@@ -669,11 +788,18 @@ en:
       index:
         liability-proof: Proof of Liabilities
         btc-assets: BTC Assets
+        ltc-assets: LTC Assets
+        rpt-assets: RPT Assets
+        trt-assets: TRT Assets
         cny-assets: CNY Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
+        verify-rpt: Verify My RPT Assets
+        verify-trt: Verify My TRT Assets
         verify-cny: Verify My CNY Assets
         btc-assets-total: 'Total BTC assets of exchange: '
+        rpt-assets-total: 'Total RPT assets of exchange: '
+        trt-assets-total: 'Total TRT assets of exchange: '
         cny-assets-total: 'Total CNY assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
@@ -682,7 +808,7 @@ en:
           this page, we present you our liabilities. We also provide you a way to
           verify that your account balance is indeed part of our liabilities.
         how-to-verify: How to verify an exchange is solvent?
-        how-to-verify-uri: https://peatio.com/documents/liability_proof
+        how-to-verify-uri: http://Peatio.com/documents/liability_proof
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please
           come back after 30 minutes.
@@ -695,6 +821,16 @@ en:
         title: BTC Assets
         intro: All of exchange's BTC assets are listed here.
         total: Total BTC Assets
+        address: Address
+      rpt_assets:
+        title: RPT Assets
+        intro: All of exchange's RPT assets are listed here.
+        total: Total RPT Assets
+        address: Address
+      trt_assets:
+        title: TRT Assets
+        intro: All of exchange's TRT assets are listed here.
+        total: Total TRT Assets
         address: Address
       cny_assets:
         title: CNY Assets
@@ -710,6 +846,8 @@ en:
         account_history: Account History
         cny_format: '0.00'
         btc_format: '0.00000000'
+        rpt_format: '0.00000000'
+        trt_format: '0.00000000'
         reason:
           cny:
             strike_add: Plus
@@ -718,6 +856,18 @@ en:
             withdraw: Withdraw
             fix: Fix
           btc:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          rpt:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          trt:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -766,6 +916,8 @@ en:
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         cny_html: "<i class='fa fa-check'></i><span>CNY Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        rpt_html: "<i class='fa fa-check'></i><span>RPT Markets</span>"
+        trt_html: "<i class='fa fa-check'></i><span>TRT Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -957,6 +1109,8 @@ en:
         title: "%{icon} %{c} Account"
         cny_format: '0.00'
         btc_format: '0.00000000'
+        rpt_format: '0.00000000'
+        trt_format: '0.00000000'
         total: Total
   guides:
     private:
@@ -1063,6 +1217,12 @@ en:
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
+        realpointcoin:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        tritiumcoin:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
     hints:
       deposit:
         bank:
@@ -1092,6 +1252,10 @@ en:
           fund_extra: If your bank is no longer in the list, please contact customer
             service
         satoshi:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        realpointcoin:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        tritiumcoin:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
     creating: Creating...
     updating: Updating...
@@ -1142,6 +1306,20 @@ en:
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
+        realpointcoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: RealPointCoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        tritiumcoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: Tritiumcoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
   admin:
     deposits:
       banks:
@@ -1158,6 +1336,18 @@ en:
         update:
           blank_txid: TxID can't be blank
       satoshis:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      realpointcoins:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      tritiumcoins:
         update:
           notice: The deposit was successful.
         index:
@@ -1248,7 +1438,49 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+        update:
+          notice: Withdraw was made
+      realpointcoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+        update:
+          notice: Withdraw was made
+      tritiumcoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+        update:
+          notice: Withdraw was made
   deposits/satoshi:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/realpointcoin:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/tritiumcoin:
     aasm_state:
       submitted: Submitted
       accepted: Accepted
@@ -1319,6 +1551,22 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    realpointcoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    tritiumcoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
     bank:
       sn: SN
       amount: Amount
@@ -1348,8 +1596,12 @@ en:
       wait: Wait
       cancel: Cancel
     currency:
+      usd: USD
+      eur: EUR
       cny: CNY
       btc: BTC
+      rpt: RPT
+      trt: TRT
     order:
       state:
         done: DONE
@@ -1377,6 +1629,8 @@ en:
     fund_source:
       category:
         satoshi: Bitcoin
+        realpointcoin: RealPointCoin
+        tritiumcoin: Tritiumcoin
         bank: Bank
     id_document:
       id_document_type:
@@ -1401,10 +1655,10 @@ en:
     footer: This is an automatically generated email, please do not reply, if you have any question, please <a href="mailto:%{contact_mail}">contact us</a>.
   comment_mailer:
     admin_notification:
-      subject: "[PEATIO] User reply a ticket"
+      subject: "[Peatio] User reply a ticket"
       notification_content: User %{email} reply a ticket, please follow the link below to see the detail
     user_notification:
-      subject: "[PEATIO] Your ticket got a new reply"
+      subject: "[Peatio] Your ticket got a new reply"
       notification_content: 'Your ticket got a new reply, please follow the link below to see the detail:'
   deposit_mailer:
     accepted:
@@ -1412,25 +1666,25 @@ en:
       content: Your %{currency} deposit has been credited into your account.
   member_mailer:
     notify_signin:
-      subject: "[PEATIO] You have just signed in"
+      subject: "[Peatio] You have just signed in"
       just_signed_in: You have just signed in.
     google_auth_activated:
-      subject: "[PEATIO] Google authenticator activated"
+      subject: "[Peatio] Google authenticator activated"
       google_auth_activated: You have activated google authenticator successfully
     google_auth_deactivated:
-      subject: "[PEATIO] Google authenticator deactivated"
+      subject: "[Peatio] Google authenticator deactivated"
       google_auth_deactivated: You have deactivated google authenticator successfully
     sms_auth_activated:
-      subject: "[PEATIO] SMS authenticator activated"
+      subject: "[Peatio] SMS authenticator activated"
       sms_auth_activated: You have activated SMS authenticator successfully
     sms_auth_deactivated:
-      subject: "[PEATIO] SMS authenticator deactivated"
+      subject: "[Peatio] SMS authenticator deactivated"
       sms_auth_deactivated: You have deactivated SMS authenticator successfully
     reset_password_done:
-      subject: "[PEATIO] Your password changed"
+      subject: "[Peatio] Your password changed"
       successful: Your password has been changed successfully.
     phone_number_verified:
-      subject: "[PEATIO] Your phone number verified"
+      subject: "[Peatio] Your phone number verified"
       verified: 'Your phone number verified: %{phone_number}'
   system_mailer:
     daily_stats:
@@ -1443,10 +1697,10 @@ en:
       trades_change_total: Trades Changes Total
   ticket_mailer:
     admin_notification:
-      subject: "[PEATIO] User created a new ticket"
+      subject: "[Peatio] User created a new ticket"
       admin_notification_content: User %{email} created a new ticket, please follow the link below to see the detail
     author_notification:
-      subject: "[PEATIO] Thank you for submit ticket"
+      subject: "[Peatio] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
   token_mailer:
     activation:
@@ -1475,7 +1729,7 @@ en:
   'true': true
   'false': false
   view_on_github: View on Github
-  slogan: An open-source crypto-currency exchange for world.
+  slogan: CRYPTO EXCHANGE WORLD
   tags:
     vip: VIP
     hero: Hero Member
@@ -1518,7 +1772,7 @@ en:
     admin: Admin Panel
     market: Trade
     settings: Profile
-    signin: Sign In
+    signin: Log In
     signout: Exit
     signup: Sign Up
     login_via_weibo: Login via Weibo
@@ -1698,9 +1952,9 @@ en:
     application:
       close: Close
     meta:
-      page_title: Peatio - The Opensource Cryptocurrency Exchange
-      page_description: Peatio - The Opensource Cryptocurrency Exchange
-      page_keywords: Peatio,Opensource,Exchange,Cryptocurrency
+      page_title: Peatio.com - The Cryptocurrency Exchange
+      page_description: Peatio.com - The Cryptocurrency Exchange
+      page_keywords: Exchange,Cryptocurrency
   members:
     edit:
       name: Please fill out the application.
@@ -1806,7 +2060,7 @@ en:
           already_activated: The Google Authenticator has already been set.
           not_activated_yet: The Google Authenticator hasn't been set yet.
       update:
-        alert: Password for authentication is incorrect, please re-enter.
+        alert: Password for authentication is incorrect, please re-enter pass.
         notice: Two-Factor Authentication has been successfully Enabled.
         sms_two_factor_error: SMS Verification code is incorrect, please re-enter.
       destroy:
@@ -1845,6 +2099,20 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    realpointcoin:
+      key: Realpointcoin_Chain
+      title: Realpointcoin Blockchain
+      intro: Withdraw Realpointcoin to your own Realpointcoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    tritiumcoin:
+      key: Tritiumcoin_Chain
+      title: Tritium Blockchain
+      intro: Withdraw Tritium to your own Tritium wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
   withdraws/bank:
@@ -1857,9 +2125,33 @@ en:
       processing: Processing
       done: Done
       almost_done: Almost Done
-      canceled: Canceld
+      canceled: Cancelled
       failed: Failed
   withdraws/satoshi:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/realpointcoin:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/tritiumcoin:
     aasm_state:
       submitting: Submitting
       submitted: Submitted
