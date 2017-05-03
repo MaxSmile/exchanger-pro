@@ -4,7 +4,7 @@ module Deposits
 
     def gen_address
       account = current_user.get_account(channel.currency)
-      if !account.payment_address.transactions.empty?
+      if !account.payment_address.transactions.empty? || true #DISABLE GEN
         @address = account.payment_addresses.create currency: account.currency
         @address.gen_address if @address.address.blank?
         render nothing: true

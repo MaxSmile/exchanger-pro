@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405053726) do
+ActiveRecord::Schema.define(version: 20170418144424) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -313,6 +313,15 @@ ActiveRecord::Schema.define(version: 20150405053726) do
 
   add_index "payment_transactions", ["txid", "txout"], name: "index_payment_transactions_on_txid_and_txout", using: :btree
   add_index "payment_transactions", ["type"], name: "index_payment_transactions_on_type", using: :btree
+
+  create_table "payments", force: true do |t|
+    t.string  "amount"
+    t.integer "currency_id"
+    t.string  "description"
+    t.integer "payment_address_id"
+    t.integer "member_id"
+    t.string  "status"
+  end
 
   create_table "proofs", force: true do |t|
     t.string   "root"

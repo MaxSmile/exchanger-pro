@@ -13,6 +13,7 @@
         tel: '95555'
 - id: 2
   key: satoshi
+  qr: btc
   code: btc
   symbol: "฿"
   coin: true
@@ -26,6 +27,7 @@
         address: 17WwQp6MiBVvjPexzqms6fG37wfAzEEfqP
 - id: 3
   key: realpointcoin
+  qr: realpointcoin
   code: rpt
   symbol: "RPT"
   coin: true
@@ -36,9 +38,10 @@
   assets:
     accounts:
       -
-        address: RkDjnJ9mcmexmcLFtLq39KnykS8v9UCKH3
+        address: Rg5SkcAg4RJD9jzCMZBUXuYAtysLS7QA8R
 - id: 4
   key: tritiumcoin
+  qr: tritium
   code: trt
   symbol: "TRT"
   coin: true

@@ -50,7 +50,7 @@ class PaymentAddress < ActiveRecord::Base
   end
 
   def to_json
-    {address: deposit_address}
+    { address: deposit_address }
   end
 
 end
