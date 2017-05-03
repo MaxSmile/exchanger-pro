@@ -4,6 +4,7 @@ class PaymentController < ApplicationController
     currency_lower = params[:coin_code].downcase
     amount = params[:amount]
     description = params[:description] || ''
+    order_number = params[:order_number] || ''
     member_id = 4
     currency = Currency.where(code: currency_lower, coin: true)
     raise InvalidCoinCodeError, params[:coin_code] if currency.blank?
@@ -25,7 +26,8 @@ class PaymentController < ApplicationController
         description: description,
         member_id: member_id,
         payment_address_id: payment_address.id,
-        status: Payment::PAYMENT_STATUS_CREATED)
+        status: Payment::PAYMENT_STATUS_CREATED,
+        order_number: order_number)
     @view_data = {
         id: payment.id,
         amount: amount,

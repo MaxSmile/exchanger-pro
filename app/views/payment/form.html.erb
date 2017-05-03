@@ -1,7 +1,6 @@
 <center>
-<h2>Payment</h2>
 <br>
-  <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<%= URI.encode(@view_data[:qr_prefix]+':'+@view_data[:address]+'?amount='+@view_data[:amount]) %>">
+  <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=<%= URI.encode(@view_data[:qr_prefix]+':'+@view_data[:address]+'?amount='+@view_data[:amount]) %>">
   <br>
   amount - <%= @view_data[:amount] %> <%= @view_data[:currency].upcase %><br>
   address - <%= @view_data[:address] %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418144424) do
+ActiveRecord::Schema.define(version: 20170503113223) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(version: 20170418144424) do
     t.integer "payment_address_id"
     t.integer "member_id"
     t.string  "status"
+    t.string  "order_number"
   end
 
   create_table "proofs", force: true do |t|

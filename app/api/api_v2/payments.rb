@@ -14,6 +14,18 @@ module APIv2
       payments.all
     end
 
+    desc 'Find payment by order number'
+    params do
+      optional :order_number, type: String, desc: 'Order number'
+    end
+    get '/payment/find' do
+      member_id = 1
+      payments = Payment.where(member_id: 1)
+      payments = Payment.where(order_number: params[:order_number])
+
+      payments.all
+    end
+
     desc 'Form payment'
     params do
       requires :coin_code, type: String,  desc: 'Coin code (BTC, RPT, TRT)'
@@ -35,14 +47,15 @@ module APIv2
       requires :coin_code, type: String,  desc: 'Coin code (BTC, RPT, TRT)'
       requires :amount, type: String,  desc: 'Amount'
       optional :description, type: String, desc: 'Payment description'
-
+      optional :order_number, type: String, desc: 'Order number'
     end
 
     post '/payment' do
       currency_lower = params[:coin_code].downcase
       amount = params[:amount]
       description = params[:description] || ''
-      member_id = 4
+      order_number = params[:order_number] || ''
+      member_id = 1
       currency = Currency.where(code: currency_lower, coin: true)
       raise InvalidCoinCodeError, params[:coin_code] if currency.blank?
 
@@ -63,7 +76,8 @@ module APIv2
           description: description,
           member_id: member_id,
           payment_address_id: payment_address.id,
-          status: Payment::PAYMENT_STATUS_CREATED)
+          status: Payment::PAYMENT_STATUS_CREATED,
+          order_number: order_number)
       {
           id: payment.id,
           amount: amount,
