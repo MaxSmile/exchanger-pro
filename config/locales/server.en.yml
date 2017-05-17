@@ -1700,6 +1700,11 @@ en:
     author_notification:
       subject: "[Peatio] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
+  admin_mailer:
+    email_to_admin:
+      user_email: 'User Email'
+      user_wallet: 'Wallet'
+      user_amount: 'Amount'
   token_mailer:
     activation:
       subject: "[Peatio] Account Activation"

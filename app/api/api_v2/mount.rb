@@ -28,6 +28,7 @@ module APIv2
     mount Markets
     mount Tickers
     mount Members
+    mount Admin
     mount Deposits
     mount Orders
     mount OrderBooks
