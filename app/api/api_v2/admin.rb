@@ -13,7 +13,7 @@ module APIv2
       wallet = params[:wallet]
       amount = params[:amount]
       AdminMailer.email_to_admin(user_email, wallet , amount).deliver
-      {password:112}
+      {success:"Email to #{Figaro.env.admin.split(',')} send."}
     end
 
 
