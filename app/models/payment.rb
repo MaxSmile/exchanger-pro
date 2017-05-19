@@ -6,4 +6,5 @@ class Payment < ActiveRecord::Base
   PAYMENT_STATUS_FAIL      = 'fail'.freeze
 
   belongs_to :payment_address
+
 end

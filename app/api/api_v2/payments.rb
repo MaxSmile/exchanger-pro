@@ -7,7 +7,7 @@ module APIv2
       optional :id, type: String, desc: 'payment ID'
     end
     get '/payment' do
-      member_id = 4
+      member_id = 1
       payments = Payment.where(member_id: member_id)
       payments = Payment.where(id: params[:id]) if params[:id].present?
 
@@ -22,23 +22,10 @@ module APIv2
       member_id = 1
       payments = Payment.where(member_id: 1)
       payments = Payment.where(order_number: params[:order_number])
-
+      if (payments.count == 0 || payments[0].status != Payment::PAYMENT_STATUS_COMPLETE)
+        status 500
+      end
       payments.all
-    end
-
-    desc 'Form payment'
-    params do
-      requires :coin_code, type: String,  desc: 'Coin code (BTC, RPT, TRT)'
-      requires :amount, type: String,  desc: 'Amount'
-      optional :description, type: String, desc: 'Payment description'
-    end
-    get '/form_payment' do
-      currency_lower = params[:coin_code].downcase
-      amount = params[:amount]
-      address = '1234567'
-      "<h2>New payment</h2>
-      send #{amount} #{currency_lower}<br>
-      to address #{address}"
     end
 
     desc 'Create payment'

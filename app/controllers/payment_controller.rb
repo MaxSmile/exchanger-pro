@@ -5,7 +5,7 @@ class PaymentController < ApplicationController
     amount = params[:amount]
     description = params[:description] || ''
     order_number = params[:order_number] || ''
-    member_id = 4
+    member_id = 1
     currency = Currency.where(code: currency_lower, coin: true)
     raise InvalidCoinCodeError, params[:coin_code] if currency.blank?
 
@@ -36,7 +36,6 @@ class PaymentController < ApplicationController
         address: address,
         qr_prefix: currency[0][:qr]
     }
-    #render json: { test: "test" }
   end
 
 end
