@@ -15,7 +15,7 @@ namespace :payment_worker do
         sum += payment_transaction.amount
       }
       b = BigDecimal.new(payment.amount) - sum
-      pp address + ' ' + sum.to_s + ' ' + payment.amount + ' ' + b.to_s
+      #pp address + ' ' + sum.to_s + ' ' + payment.amount + ' ' + b.to_s
       if b <= 0
         payment.status = Payment::PAYMENT_STATUS_COMPLETE
       else
