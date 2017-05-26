@@ -19,6 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
+
 every 1.hours do
   command '/usr/local/rbenv/shims/backup perform -t database_backup'
 end
