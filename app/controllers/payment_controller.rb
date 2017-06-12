@@ -38,4 +38,17 @@ class PaymentController < ApplicationController
     }
   end
 
+  def check_payment
+    payment = PaymentTransaction.where(address: params[:tx]).first
+    if payment.present?
+      render json: {success: true}
+    else
+      render json: {succes: false}, status: 500
+    end
+  end
+
+  def success_payment
+
+  end
+
 end

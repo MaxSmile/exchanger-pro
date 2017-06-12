@@ -30,3 +30,25 @@
   fee: 0.007
   inuse: true
   type: WithdrawChannelTritiumcoin
+- id: 402
+  key: lamda
+  currency: usd
+  fixed: 2
+  fee_max: 0
+  min: 100
+  max: 50000
+  fee: 0.003
+  proportion: true
+  inuse: true
+  type: WithdrawChannelLamda
+- id: 403
+  key: lamda
+  currency: eur
+  fixed: 2
+  fee_max: 0
+  min: 100
+  max: 50000
+  fee: 0.003
+  proportion: true
+  inuse: true
+  type: WithdrawChannelLamda

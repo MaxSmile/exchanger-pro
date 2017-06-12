@@ -16,6 +16,8 @@ Peatio::Application.routes.draw do
   end
 
   get '/payment/form' => 'payment#form', :as => :payment_form
+  get '/payment/check_payment' => 'payment#check_payment', :as => :check_payment
+  get '/payment/success' => 'payment#success_payment', :as => :success_payment
   get '/signin' => 'sessions#new', :as => :signin
   get '/signup' => 'identities#new', :as => :signup
   get '/signout' => 'sessions#destroy', :as => :signout

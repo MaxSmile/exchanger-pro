@@ -53,3 +53,29 @@
     accounts:
       -
         address: TUaaqmXAasupjnozJ9fQekUcXsfemMTXbK
+- id: 5
+  key: usdollar
+  code: usd
+  symbol: "$"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
+- id: 6
+  key: euro
+  code: eur
+  symbol: "€"
+  coin: false
+  precision: 2
+  assets:
+    accounts:
+      -
+        bank: '招商银行'
+        address: '6225 0885 6022 3501'
+        password: '111111'
+        tel: '95555'
